@@ -1,0 +1,7 @@
+node_modules/
+.vscode/
+# webstorm
+.idea/ 
+# 맥에서 등록되는 폴더
+.DS_Store/ 
+dist/
