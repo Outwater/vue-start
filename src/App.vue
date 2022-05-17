@@ -1,36 +1,22 @@
 <template>
   <h1>{{ msg }}</h1>
-  <Button @click="reverseMsg" />
-  <Hello :message="msg" :name="123" />
+  <h1>{{ name }}</h1>
+  <Hello v-model="msg" v-model:name="name" />
 </template>
 
 <script>
-import Hello from "@/components/Hello";
-import Button from "@/components/Button";
+import Hello from "@/components/HelloItem";
 
 export default {
   components: {
     Hello,
-    Button,
   },
   data() {
     return {
-      msg: "Hello Vue in App!!!",
+      msg: "hello vue!",
+      name: "Outwater",
     };
   },
-  methods: {
-    reverseMsg() {
-      this.msg = this.msg.split("").reverse().join("");
-    },
-    log() {
-      console.log(this.msg);
-    },
-  },
+  methods: {},
 };
 </script>
-<style lang="scss">
-$color: orange;
-h1 {
-  color: $color;
-}
-</style>

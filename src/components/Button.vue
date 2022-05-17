@@ -1,12 +1,12 @@
 <template>
-  <button @click="log">Click me!</button>
+  <button @click="log">Click!! me!</button>
 </template>
 
 <script>
 export default {
   methods: {
     log() {
-      console.log("clicked!");
+      console.log("clicked!!!");
     },
   },
 };
