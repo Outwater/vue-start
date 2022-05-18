@@ -1,20 +1,33 @@
 <template>
   <h1>World</h1>
+  {{ msg }}
+  <h3>{{ count }}</h3>
+
+  <button @click="decreaseCount">감소</button>
+  <h3>double: {{ double }}</h3>
+  <h3>reverse: {{ reversedMsg }}</h3>
 </template>
 
 <script>
-export default {
-  created() {
-    console.log("World 생성");
-  },
-  unmounted() {
-    console.log("World 삭제");
-  },
-};
+  import { state, getters, mutations } from "@/store";
+  export default {
+    data() {
+      return state;
+    },
+    computed: {
+      reversedMsg: getters.reversedMsg,
+      double() {
+        return this.count * 2;
+      },
+    },
+    methods: {
+      decreaseCount: mutations.decreaseCount,
+    },
+  };
 </script>
 <style scoped lang="scss">
-$color: red;
-h1 {
-  color: $color;
-}
+  $color: royalblue;
+  h1 {
+    color: $color;
+  }
 </style>

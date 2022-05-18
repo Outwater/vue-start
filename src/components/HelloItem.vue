@@ -1,18 +1,20 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <h1>{{ count }}</h1>
+  <h1>Hello</h1>
+  {{ msg }}
+  {{ count }}
+  <button @click="increaseCount">증가</button>
+  <button @click="fetchTodo">fetchTodo!</button>
 </template>
 
 <script>
-  import sampleMixin from "@/mixins/sample";
-
+  import { state, mutations, actions } from "@/store";
   export default {
-    mixins: [sampleMixin],
-    created() {
-      console.log("Hello 생성");
+    data() {
+      return state;
     },
-    unmounted() {
-      console.log("Hello 삭제");
+    methods: {
+      increaseCount: mutations.increaseCount,
+      fetchTodo: actions.fetchTodo,
     },
   };
 </script>
