@@ -1,14 +1,14 @@
 <template>
-  <h1>Hello</h1>
+  <h1>World</h1>
 </template>
 
 <script>
 export default {
   created() {
-    console.log("Hello 생성");
+    console.log("World 생성");
   },
   unmounted() {
-    console.log("Hello 삭제");
+    console.log("World 삭제");
   },
 };
 </script>
