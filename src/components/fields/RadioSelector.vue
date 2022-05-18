@@ -3,33 +3,22 @@
   <ul>
     <li v-for="item in items" :key="item">
       <label>
+        <!--eslint-disable-->
         <input
           type="radio"
           :value="item"
           :name="title"
           @input="$emit('update:modelValue', $event.target.value)"
         />
+        <!--eslint-enable-->
         {{ item }}
       </label>
     </li>
   </ul>
 </template>
 <script>
+  import RadioMixin from "./mixin";
   export default {
-    props: {
-      modelValue: {
-        type: String,
-        default: "",
-      },
-      title: {
-        type: String,
-        default: "",
-      },
-      items: {
-        type: Array,
-        default: () => [],
-      },
-    },
-    emits: ["update:modelValue"],
+    mixins: [RadioMixin],
   };
 </script>
