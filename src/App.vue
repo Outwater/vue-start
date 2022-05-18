@@ -1,37 +1,20 @@
 <template>
-  <div v-if="!isEdit">
+  <div>
     {{ msg }}
-    <button @click="onEdit">Edit</button>
-  </div>
-  <div v-else>
-    <input
-      ref="input"
-      v-model="msg"
-      type="text"
-      @keyup.enter="isEdit = false"
-    />
   </div>
 </template>
 
 <script>
-  import { nextTick } from "@vue/runtime-core";
   export default {
     data() {
       return {
         msg: "hello vue!",
-        isEdit: false,
       };
     },
-    methods: {
-      onEdit() {
-        this.isEdit = !this.isEdit;
-        nextTick(() => {
-          this.$refs.input.focus();
-        });
-        // setTimeout(() => {
-        // this.$refs.input.focus();
-        // });
-      },
+    created() {
+      this.$myName("https://jsonplaceholder.typicode.com/todos/1").then((res) =>
+        console.log(res)
+      );
     },
   };
 </script>
