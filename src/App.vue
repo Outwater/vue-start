@@ -1,26 +1,37 @@
 <template>
-  <button @click="currentComponent = 'Hello'">Hello</button>
-  <button @click="currentComponent = 'World'">World</button>
-  <keep-alive>
-    <component :is="currentComponent" />
-  </keep-alive>
+  <div v-if="!isEdit">
+    {{ msg }}
+    <button @click="onEdit">Edit</button>
+  </div>
+  <div v-else>
+    <input
+      ref="input"
+      v-model="msg"
+      type="text"
+      @keyup.enter="isEdit = false"
+    />
+  </div>
 </template>
 
 <script>
-import Hello from "@/components/HelloItem";
-import World from "@/components/WorldItem";
-
-export default {
-  components: {
-    Hello,
-    World,
-  },
-  data() {
-    return {
-      msg: "hello vue!",
-      currentComponent: "Hello",
-    };
-  },
-  methods: {},
-};
+  import { nextTick } from "@vue/runtime-core";
+  export default {
+    data() {
+      return {
+        msg: "hello vue!",
+        isEdit: false,
+      };
+    },
+    methods: {
+      onEdit() {
+        this.isEdit = !this.isEdit;
+        nextTick(() => {
+          this.$refs.input.focus();
+        });
+        // setTimeout(() => {
+        // this.$refs.input.focus();
+        // });
+      },
+    },
+  };
 </script>
