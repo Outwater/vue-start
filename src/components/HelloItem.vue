@@ -1,20 +1,11 @@
 <template>
-  <h1>Hello</h1>
-  {{ msg }}
-  {{ count }}
-  <button @click="increaseCount">증가</button>
-  <button @click="fetchTodo">fetchTodo!</button>
+  <h1>Hello.vue</h1>
 </template>
 
 <script>
-  import { state, mutations, actions } from "@/store";
   export default {
     data() {
-      return state;
-    },
-    methods: {
-      increaseCount: mutations.increaseCount,
-      fetchTodo: actions.fetchTodo,
+      return {};
     },
   };
 </script>

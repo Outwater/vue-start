@@ -1,9 +1,9 @@
 import * as Vue from "vue";
 import App from "@/App.vue";
-import fetchPlugin from "@/plugins/fetch";
+import store from "@/store";
+import router from "@/routes";
 
 const app = Vue.createApp(App);
-app.use(fetchPlugin, {
-  pluginName: "$myName",
-});
+app.use(store);
+app.use(router);
 app.mount("#app");

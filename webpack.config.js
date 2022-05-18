@@ -13,17 +13,28 @@ module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
     clean: true,
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules\/(?!axios)/,
+        use: "babel-loader",
+      },
       {
         test: /\.vue$/,
         use: "vue-loader",
       },
       {
         test: /\.s?css$/,
-        use: ["vue-style-loader", "css-loader", "sass-loader"],
+        use: [
+          "vue-style-loader",
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
     ],
   },
@@ -37,6 +48,7 @@ module.exports = {
     }),
   ],
   devServer: {
+    historyApiFallback: true,
     port: 8001,
   },
   devtool: "inline-source-map",
