@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
-import movie from "./movie";
+import workspace from "./workspace";
 
 export default createStore({
   modules: {
-    movie,
+    workspace,
   },
 });
