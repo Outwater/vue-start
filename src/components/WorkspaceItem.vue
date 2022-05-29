@@ -8,10 +8,10 @@
       >
         play_arrow
       </span>
-      <span class="text">{{ workspace.title || 제목없음 }}</span>
+      <span class="text">{{ workspace.title || "제목없음" }}</span>
       <div class="actions">
-        <span class="material-icons"> add </span>
-        <span class="material-icons"> delete </span>
+        <span class="material-icons" @click="createWorkspace"> add </span>
+        <span class="material-icons" @click="deleteWorkspace"> delete </span>
       </div>
     </div>
     <div
@@ -51,6 +51,22 @@
     computed: {
       hasChildren() {
         return this.workspace.documents && this.workspace.documents.length > 0;
+      },
+    },
+    mounted() {
+      console.log(this.workspace);
+    },
+    methods: {
+      createWorkspace() {
+        this.$store.dispatch("workspace/createWorkspace", {
+          parentId: this.workspace.id,
+        });
+        this.isShowChildren = true;
+      },
+      deleteWorkspace() {
+        this.$store.dispatch("workspace/deleteWorkspace", {
+          id: this.workspace.id,
+        });
       },
     },
   };

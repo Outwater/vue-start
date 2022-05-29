@@ -11,7 +11,15 @@
         :workspace="workspace"
       />
     </ul>
-    <div class="nav__actions">+ 새페이지</div>
+    <div class="nav__actions">
+      <div
+        class="nav__action"
+        @click="$store.dispatch('workspace/createWorkspace')"
+      >
+        <span class="material-icons"> add </span>
+        새페이지
+      </div>
+    </div>
   </nav>
 </template>
 <script>
@@ -56,6 +64,27 @@
     }
     &__list {
       flex-grow: 1;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    &__actions {
+      border-top: 1px solid $color-border;
+    }
+    &__action {
+      height: 45px;
+      display: flex;
+      align-items: center;
+      padding: 0 14ppx;
+      color: $color-icon;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-background--hover1;
+      }
+      .material-icons {
+        margin-left: 4px;
+        color: $color-icon;
+      }
     }
   }
 </style>
